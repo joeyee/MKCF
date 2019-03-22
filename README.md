@@ -5,6 +5,8 @@ http://v.youku.com/v_show/id_XMzY0ODU1MzQ5Ng==.html?spm=a2hzp.8253876.0.0&f=5176
 Revised results are in the following link:
 https://v.youku.com/v_show/id_XNDEwNjQ4MzQyOA==.html?spm=a2hzp.8253876.0.0&f=52133551
 
+https://github.com/joeyee/MKCF/blob/master/Video/MKCF_for_alice.mp4
+
 All the source code and dataset will be open source soon after the publishing of the paper:
 "Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data",
 which is undering review now.
