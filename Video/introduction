@@ -2,6 +2,7 @@
 in tracking the five targets ['ALice', 'Billy', 'Camen', 'Dolphin', 'Ellen'], from frame #2 to #409.
 
    MKCF_for_alice.mp4 shows the dynmaically status changes of MKCF in tracking Alice. In the first line of the image, 
-   we print the averaging psr (ave_psr), averaging life (life means the survived frames for a KCF tracker ), minimum psr  of the fused trackers,
-   tracker_nums denotes the number of the fused trackers. The qualified, not-qualified esitimation of a component KCF are displayed in different color.
-   Fused rectangle and segmented rectangle are also given in red and blue colors.
+   we print the averaging psr (ave_psr), averaging life (life means the survived frames for a KCF tracker ), minimum psr  
+   of the fused trackers, tracker_nums denotes the number of the fused trackers. The qualified, not-qualified esitimation of 
+   a component KCF are displayed in different color. Fused rectangle and segmented rectangle are also given in red and blue 
+   colors.
