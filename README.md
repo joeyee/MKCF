@@ -1,4 +1,4 @@
-# Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking
+# Multiple Kernelized Correlation Filters (MKCF) \\ for Extended Object Tracking
 
 ## Introduction
 
