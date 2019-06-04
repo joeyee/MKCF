@@ -1,7 +1,8 @@
 # Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking
 
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)   
-This is the **python** implementation of the - [Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data](https://ieeexplore.ieee.org/document/8718392).
+This is the **python** implementation of the - 
+[Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data](https://ieeexplore.ieee.org/document/8718392).
 
 ## Requirements
 - python - 3.6.5
@@ -13,9 +14,10 @@ This is the **python** implementation of the - [Multiple Kernelized Correlation 
 python Demo_MKCF.py 
 
 ```
-
-# (### Step2)
+<!---
+### Step2
 Use mouse to select the object which needs to be tracked and Press **Enter** to start tracking.
+--->
 
 ## Demo Video
 [demo on Youku](https://v.youku.com/v_show/id_XNDEwNjQ4MzQyOA==.html?spm=a2hzp.8253876.0.0&f=52133551)
