@@ -11,7 +11,25 @@ This is the **python** implementation of the -
 - opencv-python
 
 ## How to use the code
+
 ### Step 1
+Download the raw radar data from the [Net disk of Baidu]() or [Google drive]()
+```Python
+while True:
+    #Show the data with one frame 
+    fdata_obj = open('path of the downloaded radar data file', 'rb')
+    frame = np.fromfile(fdata_obj, 'float64', 600 * 2048)
+    if frame.size == 0:
+       break
+    uframe = (frame * 255).astype(np.uint8) # convert double to unit for displaying with opencv
+    #view the raw data in the polar-coordinates
+    cv2.imshow('polar', uframe)
+    #view in the cartesian-coordinates
+    dispmat = corcon.polar2disp_njit(frame, np.array([]))
+    cv2.imshow('Descartes', dispmat)
+    cv2.waitKey()
+```
+### Step 2
 ```bash
 python Demo_MKCF.py 
 
