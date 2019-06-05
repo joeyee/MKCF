@@ -43,7 +43,10 @@ When I studied the handbook of data fusion [Liggins et al., 2008] for deducing t
 
 The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.codecogs.com/svg.latex?K_{xx}) in the reference, she try to learn the pattern ![alpha](https://latex.codecogs.com/svg.latex?\alpha) of the matrix. In the later frame, the convolution of the tested Kernel matrix ![Kxz](https://latex.codecogs.com/svg.latex?K_{xz}) and ![alpha](https://latex.codecogs.com/svg.latex?\alpha) produce the response map, saying the probability of a sample to be the true target. Here we can see that the PF and KCF both relies heavily on the reference model of the target which is computed on the initial frame. KCF uses naive running average to update the reference model. It is simple in computing, but can not handle the multiple models of the true target in long-term tracking. Therefore there should be a on-off key (PSR) for updating.  The component of MKCF are independent KCF, which is dynamically initialized on different frame. Consequently, **MKCF maintains multiple instances of the true target in different time steps. This technique enhances the robustness of the tracker in long-term tracking without using time-consuming visual features. It works in radar signal and  also provides useful experience for the video oriented visual tracking.**
 
+## Diagram of the MKCF
+![Sequential](https://github.com/joeyee/MKCF/blob/master/images/Diagram_MKCF.png)
 
+![oneStep](https://github.com/joeyee/MKCF/blob/master/images/diagram_one_timestep.png)
 
 
 
