@@ -4,6 +4,8 @@
 This is the **python** implementation of the - 
 [Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data](https://ieeexplore.ieee.org/document/8718392).
 
+[Source paper](https://github.com/joeyee/MKCF/blob/master/MKCF_SourcePaper_SingleColumn.pdf) with supplementary materials could be download at Github.
+
 ## Requirements
 - python - 3.6.5
 - opencv-python
@@ -28,6 +30,7 @@ Use mouse to select the object which needs to be tracked and Press **Enter** to 
 
 ## Introduction
 How to track the target of marine radar in the complex electromagnetic environment? [Need a map here]
+![radar_scene](https://github.com/joeyee/MKCF/blob/master/images/radar_scene.png)
 
 Traditional filter based methods (such as kalman filter KF) , which are embedded on the marine radar, could not resist the clutter interruption and ship occlusion in the narrow waterway. It reflects the equipment-embedded tracking method can not fit the association bug for target tracking in the heavy clutter environment. More sophisticated methods like extended object tracking (EOT), particle filters based method are tested but not work neither. 
 %
