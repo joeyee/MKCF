@@ -4,7 +4,7 @@
 This is the **python** implementation of the - 
 [Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data](https://ieeexplore.ieee.org/document/8718392).
 
-[Source paper](https://github.com/joeyee/MKCF/blob/master/MKCF_SourcePaper_SingleColumn.pdf) with supplementary materials could be download at Github.
+[Source paper](https://github.com/joeyee/MKCF/blob/master/MKCF_SourcePaper_SingleColumn.pdf) of the preprint version with supplementary materials could be download at Github.
 
 ## Requirements
 - python - 3.6.5
