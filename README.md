@@ -84,4 +84,8 @@ The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.co
 
 [Liggins et al., 2008]Martin E. Liggins, David L. Hall, and James Llinas. Handbook of multisensor data fusion: theory and practice. CRC Press, 2nd edition, 2008. 2, 19, 21
 
+<dl>
 <script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=5B4XJjSp3_gxkzPck_Uh7bPH2hr1JEGySA5tIbewhpQ"></script>
+</dl>
+
+
