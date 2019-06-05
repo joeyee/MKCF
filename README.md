@@ -13,8 +13,13 @@ This is the **python** implementation of the -
 ## How to use the code
 
 ### Step 1
-Download the raw radar data from the [Net disk of Baidu]() or [Google drive]()
+Download the raw radar data from the [Net disk of Baidu](https://pan.baidu.com/s/1GJ6JR9jfYVLR7OfRLtkQlg) with PWD (yu67) 
+<!---
+![Wechat_download](https://github.com/joeyee/MKCF/blob/master/images/baidu_qrcode.jpeg), 
+-->
+or [Google drive]()
 ```Python
+#following code is to test and view the raw radar data
 fdata_obj = open('path of the downloaded radar data file', 'rb')
 while True:
     #Show the data with frame by frame
