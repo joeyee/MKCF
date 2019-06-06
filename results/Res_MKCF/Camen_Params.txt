@@ -1,0 +1,1 @@
+{'BlobSeg': {'MorphIter': 2, 'DilateIter': 3, 'DistThreash': 0.3, 'SubWindow': (200, 100)}, 'VotePsr': 10, 'VoteDistThreash': 100, 'PrioSigmaFactor': 0.75, 'BlobScore': 0.15, 'NumberOfTrackers': 3}
