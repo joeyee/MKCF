@@ -1,0 +1,71 @@
+ALice
+Center Location Error: 274 pixels
+Distance Precision: 39.3 %
+Overlap Precision: 29.29 %
+Overlap: 28.274%
+Speed: 139.28 fps
+
+Billy
+Center Location Error: 511 pixels
+Distance Precision: 29.1 %
+Overlap Precision: 19.283 %
+Overlap: 19.7%
+Speed: 150.27 fps
+
+Camen
+Center Location Error: 18.6 pixels
+Distance Precision: 57.1 %
+Overlap Precision: 57.143 %
+Overlap: 55.372%
+Speed: 121.26 fps
+
+Dolphin
+Center Location Error: 362 pixels
+Distance Precision: 42.1 %
+Overlap Precision: 31.405 %
+Overlap: 27.115%
+Speed: 167.2 fps
+
+Ellen
+Center Location Error: 324 pixels
+Distance Precision: 42.1 %
+Overlap Precision: 27.698 %
+Overlap: 27.892%
+Speed: 159.44 fps
+
+==
+ALice
+Center Location Error: 274 pixels
+Distance Precision: 39.3 %
+Overlap Precision: 29.29 %
+Overlap: 28.274%
+Speed: 131.23 fps
+
+143         end
+Billy
+Center Location Error: 511 pixels
+Distance Precision: 29.1 %
+Overlap Precision: 19.283 %
+Overlap: 19.7%
+Speed: 133.67 fps
+
+Camen
+Center Location Error: 18.6 pixels
+Distance Precision: 57.1 %
+Overlap Precision: 57.143 %
+Overlap: 55.372%
+Speed: 112.21 fps
+
+Dolphin
+Center Location Error: 362 pixels
+Distance Precision: 42.1 %
+Overlap Precision: 31.405 %
+Overlap: 27.115%
+Speed: 161.27 fps
+
+Ellen
+Center Location Error: 324 pixels
+Distance Precision: 42.1 %
+Overlap Precision: 27.698 %
+Overlap: 27.892%
+Speed: 151.81 fps

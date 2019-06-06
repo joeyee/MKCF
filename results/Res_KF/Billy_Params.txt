@@ -1,0 +1,2 @@
+{'var_velo_x': 4, 'var_velo_y': 6, 'var_measure_x': 2, 'var_measure_y': 3, 'BlobSeg': {'MorphIter': 2, 'DilateIter': 3, 'DistThreash': 0.6, 'SubWindow': (200, 100)}}
+Averaged_time_per_frame 0.002979 s

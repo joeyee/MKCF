@@ -1,48 +1,32 @@
 """
 The main entrance for the Multiple Kernelized Correlation Filters (MKCF),
-the paper in under review for IEEE TSP now, available on arxiv:
+The paper is published in IEEE TSP now (https://ieeexplore.ieee.org/document/8718392).
+Source paper with supplementary materials (diagrams of the algorithm and curve results)
+is also available on the following link:
+(https://github.com/joeyee/MKCF/blob/master/MKCF_SourcePaper_SingleColumn.pdf)
 
-the process for MKCF is :
+
+The aim for MKCF is :
 To enhance the long-term tracking, multiple trackers are fused to track a proper object.
 
-load data from datasets file ->
+load data from radar datasets file ->
      -> send one frame to the MKCF tracker
             -> initial frame with marked ROI initialize the first tracker
             -> later frame update the MKCF tracker, blob segmentation and multiple tracker rectangles involved voting
                give birth to new individual tracker if necessary.
-            -> fusion multiple tracker with Bayesian approach.
+            -> fusion multiple tracker via the maximum likelihood criterion.
             -> output the final tracker rectangle (position and width, height)
 
 """
-#
-# Every frame is new beginning. segmentation the blobs, and looking for the most possible position for the target.
-# [If the size is changing, the blob contains the object is initialized as a new tracker.]
-# or just
-# Fusion multi-frames trackers in a proper time
+
 
 import cv2
-# this is just to unconfuse pycharm
-#from cv2 import cv2
-
-import ast
-
-# import wx
-# import matplotlib
-# matplotlib.use("wxAgg")
-# from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
-# from matplotlib import cm
 import pylab
-pylab.ioff()
-
-
+pylab.ioff()   # try to avoid the conflict between pylab.imshow() and cv2.waitKey() on Mac
 import time
-import _pickle as cPickle
-import math
 import numpy               as np
 import coordinates_convert as corcon
-#import KCFtracker_status   as KCF_ST
 import KCFtracker_Status_MotionVector   as KCF_ST_MV
-
 import utility as uti
 from   PIL     import Image
 
@@ -50,7 +34,8 @@ from   PIL     import Image
 def load_zhicheng_GT():
     '''
     Set the path and GT files name, according start_id, end_id.
-    :return:
+    Convert the Gt file information into a dictionary data type [GtInfo]
+    :return GtInfo:
     '''
     FilePath = '../ground_truth/'
     GtParam = {'ALice':{'FileName':'zhicheng20130808_22.xx_60-400_polarGT_Alice.txt',   'StartId':60, 'EndId':400},
@@ -60,6 +45,7 @@ def load_zhicheng_GT():
               'Dolphin':{'FileName':'zhicheng20130808_22.xx_72-316_polarGT_Dolphin.txt','StartId':73, 'EndId':316},
               'Ellen':{'FileName':'zhicheng20130808_22.xx_129-408_polarGT_Ellen.txt',   'StartId':129,'EndId':408}
               }
+
     #将GtParam里面的文件路径参数赋予load_GT函数，分析出Gt的每帧位置信息，存入GtData
     GtInfo = {}
     for key in GtParam:
@@ -216,7 +202,7 @@ def fuse_trackers(tracker_list):
 def fuse_approx_trackers(trackerlist, vote_psr_threash=10):
     '''
     Assuming that the trackerlist contain's all the tracker which is greater or equal votePsrThreashold 10,
-    then we can approximate the y'_i in Gaussian distribution.
+    then we can approximate the y'_i in Gaussian distribution, see the source paper [Section IV-C] for details.
     :param trackerlist:
     :return: fused bounding box of the obj_bbox.
     '''
@@ -309,6 +295,16 @@ def weight_tbox(obj_rect, offset, tbbs, psrs, sigma_factor = 1./4):
 DETAIL_MODE = False
 def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamOptions):
     """
+    :param obj_name: the name of the interested object
+    :param trial_times: repeating times
+    :param GtDict: ground truth
+    :param roi_mask:  map mask which omitting the echoes from the land and  bridge
+    :param start_id: start frame id
+    :param end_id:   end frame id
+    :param ParamOptions: Key parameters for the MKCF
+    :return:
+    """
+    """
     Get the formatted sub-image_list, append in polar or cart subimage list.
     data_name given the source binary data file name.
     frame_id, is indexed for several sequences in sequential time.
@@ -371,16 +367,17 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
     # reading the sequential 4 files in a loop
     for i in np.arange(4):
 
+        #please replace the path with yours.
         file_prefix = '/Users/yizhou/Radar_Datasets/Zhicheng/zhicheng_20130808_22.'
         file_suffix = '_5minutes_600x2048.double.data'
         data_name = '%s%d%s' % (file_prefix, 28 + i * 5, file_suffix)
-        print( data_name)
+        print(data_name)
         fdata_obj = open(data_name, 'rb')
         # loading file data and to convert from polar to cartesian
         while True:
             #tstart = time.clock()
             if frame_id > end_id:
-                #using empty frame to break the while loop
+                #release the frame and break the while loop
                 frame = np.array([])
                 break
             else:
@@ -426,10 +423,8 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
                     cv2.waitKey(1)
 
                     if frame_mode == 'polar':
+                        #omitting the land and bridge echoes by '&' roi_mask.
                         tframe  = dframe * roi_mask
-                        #echoThreash plays a role of CFAR.
-                        echoThreash = np.mean(tframe)
-                        tuframe = uframe
                         canvas_frame = canvas_polar
                     else:
                         tframe  = dispmat
@@ -437,19 +432,14 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
                         canvas_frame = canvas_disp
 
                     if frame_id == start_id :
-                        # init previous frame
-                        preframe = tuframe
-                        obj_bbox = objGtElem['BoundingBox']  # frame60 Alice
-                        # Uncomment the line below to select a different bounding box
-                        # bbox = cv2.selectROI(frame, False)
+
+                        obj_bbox = objGtElem['BoundingBox']
                         # Initialize tracker with first frame and bounding box
-                        #tracker = KCF_ST.KCFTracker_status()
                         tracker = KCF_ST_MV.KCFTracker_status()
-                        #tracker = KCF_ST_MV_LK.KCFTracker_status()
                         ok = tracker.init(tframe, obj_bbox)
                         if ok:
                             tracker_list.append(tracker)
-                            #tracker_dict.update({str(frame_id):tracker})
+
 
                         blob_list, seg_roi, sub_blob_list = uti.blob_seg(tframe, obj_bbox)
                         obj_blob, blob_score, blob_id = uti.vote_blob(blob_list, [obj_bbox])
@@ -500,11 +490,12 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
                             ok, bbox, psr, response = tracker.update(tframe)
                             dist2obb = np.sqrt(( bbox[0]+bbox[2]/2 - obj_bbox[0] - obj_bbox[2]/2)**2
                                               +( bbox[1]+bbox[3]/2 - obj_bbox[1] - obj_bbox[3]/2)**2)
+                            #monitoring the status of the trackers
                             tracker.status_monitor(psr, dist2obb, psr_threash=10, dist_theash=100)
+
                             if (DETAIL_MODE == True):
                                 print('tracker...psr %2.1f, life %d' % (psr, tracker.trackNo))
                             #only psr is higher enough, tbbs add to the votable_tbb list to vote for the new blob
-                            #if(psr > 5.0) :
                             if(psr > VotePsrThreash):
                                 high_psr_tbox_list.append(bbox)
                                 psr_list.append(psr)
@@ -591,10 +582,6 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
 
 
                         if len(high_psr_tbox_list)!=0:
-
-                            obj_bbox = weight_tbox(obj_bbox, (0,0), np.array(high_psr_tbox_list),
-                                                        np.array(psr_list), sigma_factor= PrioSigmaFactor)
-
                             fuse_approx_time = time.clock()
                             obj_bbox = fuse_approx_trackers(tracker_list)
                             fuse_approx_time = time.clock() - fuse_approx_time
@@ -649,17 +636,6 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
                             print ('voting trackers - all trackers %d-%d' % (len(votable_tbox_list), len(tracker_list)))
 
 
-
-                        # if frame_id == 233:
-                        #     print('be careful the jump!')
-
-
-
-                        # fuse_time = time.clock()
-                        # fuse_obj_bbox = fuse_trackers(tracker_list)
-                        # fuse_time =time.clock() - fuse_time
-                        # print('fuse_time %f, fuse_approx saving %.3f times', fuse_time, fuse_time/fuse_approx_time)
-
                         #voted object blob
                         obj_blob = {}
                         #if len(tracker_list) < NumberOfTrackers:
@@ -695,12 +671,6 @@ def load_frame(obj_name, trial_times, GtDict, roi_mask, start_id, end_id, ParamO
                                 using_blob_for_tracker = True
                         else:#voted blob is null
                             print('No blob is voted!')
-
-                        # # decrease tracker number, minimum is equal to the initial parameter settings.
-                        # if ave_psr > VotePsrThreash + 5:
-                        #     NumberOfTrackers = max(NumberOfTrackers - 1, ParamOptions['NumberOfTrackers'])
-                        #     if DETAIL_MODE == True:
-                        #         if NumberOfTrackers != ParamOptions['NumberOfTrackers']: print('Decrease one tracker')
 
                         if using_blob_for_tracker:
                             rotate_rect =  obj_blob['RotatedBox']
@@ -828,8 +798,10 @@ if __name__ == '__main__':
     cv2.namedWindow('polar')
     cv2.moveWindow('polar', 0, 0)
 
+    #load ground truth file in GtInfo dictionary.
     GtInfo = load_zhicheng_GT()
 
+    #load map mask (polygon vertex) into the roi_mask
     roi_poly_name = '../ground_truth/roi_polygon/zhicheng_env.txt'
     roi_mask = uti.get_env_roi_mask(roi_poly_name, height=600, width=2048)
     resPath = '../results/Res_MKCF/'
@@ -838,25 +810,17 @@ if __name__ == '__main__':
     ntarget = 0
     timeCounter = 0
 
-    '''first viersion using distTreash 0.6, currently using 0.3'''
+    #first viersion using distTreash 0.6, currently using 0.3
+    #'BlobSeg' is the parameter for the segmenation in OpenCV
     ParamOptionsDefault = {'BlobSeg': {'MorphIter': 2, 'DilateIter': 3, 'DistThreash': 0.3, 'SubWindow': (200, 100)},
-                           'VotePsr': 10,
-                           'VoteDistThreash': 100,
-                           'PrioSigmaFactor': 3. / 4,
-                           'BlobScore': 0.15,
-                           'NumberOfTrackers': 3
+                           #VotePsr named Sth in Table IV of the source paper
+                           'VotePsr': 10,  #The minimum PSR scores for the qualified tracker.
+                           'VoteDistThreash': 100,  # Votable distance limitation, ensuring the votalbe trackers are from the neighbourhood.
+                           'PrioSigmaFactor': 3. / 4, #out of use
+                           'BlobScore': 0.15,      #Oth in the paper
+                           'NumberOfTrackers': 3   #number of the fused trackers
                            }
     for key in GtInfo:
-        #if key == 'ALice' or key=='Billy':# or key=='Camen':
-        #        continue
-        #if key != 'Billy': #and key !='Ellen':
-        #    continue
-        # if  key =='Dolphin':
-        #           continue
-        #if key != 'Ellen': #and key != 'ALice':
-        #     continue
-        if key != 'Camen':
-               continue
         GtElem = GtInfo[key]
         paramFile = open(resPath+key+'_Params.txt', 'w')
         print ('Evaluate %s parameters: ' % key)
@@ -868,6 +832,7 @@ if __name__ == '__main__':
 
         #BlobScore influence the tracker's shrinking speed.
         #for trial,number in enumerate([15, 10, 8, 5, 3]):
+        #Here can try different  NumberOfTrackers parameter.
         for trial, number in enumerate([3]):
             #ParamOptionsDefault['PrioSigmaFactor'] = factor
             ParamOptionsDefault['NumberOfTrackers'] = number
