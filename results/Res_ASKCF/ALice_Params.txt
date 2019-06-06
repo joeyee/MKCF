@@ -1,0 +1,2 @@
+{'BlobSeg': {'MorphIter': 2, 'DilateIter': 3, 'DistThreash': 0.6, 'SubWindow': (200, 100)}, 'VotePsr': 5, 'VoteDistThreash': 100, 'PrioSigmaFactor': 0.75, 'BlobScore': 0.15, 'NumberOfTrackers': 15}
+Averaged_time_per_frame 0.011449 s

@@ -1,0 +1,6 @@
+ALice averaged_time_per_frame 0.007179 s
+Billy averaged_time_per_frame 0.006654 s
+Camen averaged_time_per_frame 0.008246 s
+Dolphin averaged_time_per_frame 0.005980 s
+Ellen averaged_time_per_frame 0.006271 s
+Over_5_targets average_time_per_frame 0.006866 s
