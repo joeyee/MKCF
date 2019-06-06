@@ -1,3 +1,8 @@
+In this directory, we have manually made GT files for the Alice, Billy, Camen, Dolphy and Ellen.
+They contains the bounding rects and polygon vertex for each target in every frame.
+Each txt file is a dictionary type.
+It uses the frame id as the main key. In each frame, it gives the 'Boundingbox'[x, y, width, height], 'Rotatedbox'[x,y,w,h, angle], 'Centroid'[x0,y0],'Polygon'[[x1,y1], ..., [xn, yn]] information of the targets.
+
 可以通过Show_GT 函数来查看数据。
 
 1.zhicheng_Alice 自60帧左下位置开始，400帧右下位置结束。 
