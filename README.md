@@ -75,7 +75,7 @@ The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.co
 
 
 ## Reference:
-[1] [Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data](https://ieeexplore.ieee.org/document/8718392).
+[[Zhou et al., 2019]](https://ieeexplore.ieee.org/document/8718392)Yi Zhou, Tian Wang, Ronghua Hu, Hang Su, Yi Liu, Xiaoming Liu, Jidong Suo, Hichem Snoussi, Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-band Marine Radar Data, IEEE Transactions on Signal Processing, 2019.
 
 [[Henriques et al., 2012]](http://www.robots.ox.ac.uk/~joao/publications/henriques_eccv2012.pdf)J. Henriques, R. Caseiro, P. Martins, and J. Batista. Exploiting the circulant structure of tracking-by-detection with kernels. In Proceedings of the European Conference on Computer Vision, 2012.
 
