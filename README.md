@@ -17,7 +17,7 @@ Download the raw radar data from the [Net disk of Baidu](https://pan.baidu.com/s
 <!---
 ![Wechat_download](https://github.com/joeyee/MKCF/blob/master/images/baidu_qrcode.jpeg), 
 -->
-or [Google drive](https://drive.google.com/drive/folders/1F2gGTT0eBk7bdGFrcyH2G3vbkEBQ57fu?usp=sharing)
+or [Radar_Datasets_MKCF on Google drive](https://drive.google.com/drive/folders/1F2gGTT0eBk7bdGFrcyH2G3vbkEBQ57fu?usp=sharing)
 ```Python
 #following code is to test and view the raw radar data
 fdata_obj = open('path of the downloaded radar data file', 'rb')
