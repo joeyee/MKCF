@@ -82,7 +82,7 @@ The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.co
 
 [[Ma et al., 2015]](https://ieeexplore.ieee.org/document/7410709/) Chao Ma, Jia-Bin Huang, Xiaokang Yang, and Ming-Hsuan Yang. Hierarchical convolutional features for visual tracking. In Proceedings of the IEEE International Conference on Computer Vision, pages 3074–3082, 2015. 1
 
-[Liggins et al., 2008]Martin E. Liggins, David L. Hall, and James Llinas. Handbook of multisensor data fusion: theory and practice. CRC Press, 2nd edition, 2008. 2, 19, 21
+[Liggins et al., 2008]Martin E. Liggins, David L. Hall, and James Llinas. Handbook of multisensor data fusion: theory and practice. CRC Press, 2nd edition, 2008.
 
 <!---
 <dl>
