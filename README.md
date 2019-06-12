@@ -87,12 +87,16 @@ The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.co
 ## Bibtex
 
 @ARTICLE{MKCFP2019, 
+
 author={Y. {Zhou} and T. {Wang} and R. {Hu} and H. {Su} and Y. {Liu} and X. {Liu} and J. {Suo} and H. {Snoussi}}, 
 journal={IEEE Transactions on Signal Processing}, 
+
 title={Multiple Kernelized Correlation Filters (MKCF) for Extended Object Tracking Using X-Band Marine Radar Data}, 
+
 year={2019}, 
 volume={67}, 
 number={14}, 
+
 pages={3676-3688}, 
 }
 <!---
