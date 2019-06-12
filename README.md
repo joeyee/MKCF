@@ -84,7 +84,7 @@ The advantage of KCF is that, once get the Kernel matrix ![Kxx](https://latex.co
 
 [Liggins et al., 2008]Martin E. Liggins, David L. Hall, and James Llinas. Handbook of multisensor data fusion: theory and practice. CRC Press, 2nd edition, 2008.
 
-##Bibtex
+## Bibtex
 
 @ARTICLE{MKCFP2019, 
 author={Y. {Zhou} and T. {Wang} and R. {Hu} and H. {Su} and Y. {Liu} and X. {Liu} and J. {Suo} and H. {Snoussi}}, 
