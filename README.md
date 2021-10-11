@@ -99,6 +99,16 @@ number={14},
 
 pages={3676-3688}, 
 }
+
+## Erratum
+
+In Eq.(9) of computing $`\alpha`$, the "\*" mark should be omited. The complex-conjugate Fourier transformation ${\cal F}^\*$ only exists in the computing of self-correlation and cross-correlation.
+
+![equation](https://latex.codecogs.com/gif.latex?%5Cboldsymbol%7B%5Calpha%20%7D%20%3D%20%7B%7B%5Ccal%20F%7D%5E%7B-1%7D%7D%5Cleft%28%20%5Cfrac%7B%7B%7B%5Ccal%20F%7D%5Cleft%28%20%5Cmathbf%7BY%7D%20%5Cright%29%7D%7D%7B%7B%7B%7B%5Ccal%20F%7D%5E*%7D%5Cleft%28%20%7B%7B%5Ctextbf%7BK%7D_%7Bxx%7D%7D%7D%20%5Cright%29%20&plus;%20%5Clambda%20%7D%7D%5Cright%29)
+
+is corrected as:
+
+![equation](https://latex.codecogs.com/gif.latex?%5Cboldsymbol%7B%5Calpha%20%7D%20%3D%20%7B%7B%5Ccal%20F%7D%5E%7B-1%7D%7D%5Cleft%28%20%5Cfrac%7B%7B%7B%5Ccal%20F%7D%5Cleft%28%20%5Cmathbf%7BY%7D%20%5Cright%29%7D%7D%7B%7B%7B%7B%5Ccal%20F%7D%7D%5Cleft%28%20%7B%7B%5Ctextbf%7BK%7D_%7Bxx%7D%7D%7D%20%5Cright%29%20&plus;%20%5Clambda%20%7D%7D%5Cright%29)
 <!---
 <dl>
 <script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=5B4XJjSp3_gxkzPck_Uh7bPH2hr1JEGySA5tIbewhpQ"></script>
